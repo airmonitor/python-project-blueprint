@@ -1,10 +1,15 @@
 bandit
 black
+docformatter
 flake8
 flake8-bandit
 flake8-black
 flake8-isort
 flake8-mypy
+flake8-builtins
+flake8-logging-format
+flake8-docstrings
+flake8-rst-docstrings
 isort
 mypy
 pylint
