@@ -25,6 +25,9 @@ lint:
 	@echo "\n${BLUE}Running Bandit against source files...${NC}\n"
 	@bandit -r --ini setup.cfg
 
+dependencies:
+	@echo "\n{BLUE}Show module dependencies ${NC}\n"
+	@pipdeptree
 
 version:
 	@echo $(TAG)
