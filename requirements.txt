@@ -21,3 +21,5 @@ mypy
 pylint
 pytest-cov==2.8.1
 pytest==5.3.2
+pipdeptree
+graphviz

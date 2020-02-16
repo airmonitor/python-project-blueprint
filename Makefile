@@ -17,7 +17,7 @@ lint:
 	@echo "\n{BLUE}Reformat code via black...${NC}\n"
 	@black -l 120 **/*.py
 	@echo "\n${BLUE}Reformat docstrings via docformatter...${NC}\n"
-	@docformatter --in-place --blank --pre-summary-newline **/*.py
+	@docformatter --in-place --blank --pre-summary-newline --wrap-summaries 120 --wrap-descriptions 120 **/*.py
 	@echo "\n${BLUE}Running Pylint against source and test files...${NC}\n"
 	@pylint --rcfile=setup.cfg **/*.py
 	@echo "\n${BLUE}Running Flake8 against source and test files...${NC}\n"
