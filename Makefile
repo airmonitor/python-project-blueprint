@@ -29,7 +29,7 @@ lint: ## Lint your code and reformat it using black, docstrings, isort and other
 	@echo "\n${BLUE}Running Flake8 against source and test files...${NC}\n"
 	@flake8
 	@echo "\n${BLUE}Running Bandit against source files...${NC}\n"
-	@bandit -r --ini setup.cfg
+	@bandit -r --ini setup.cfg **/*
 
 dependencies: ## List dependencies used in project
 	@echo "\n{BLUE}Show module dependencies ${NC}\n"
