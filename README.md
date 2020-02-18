@@ -26,6 +26,16 @@ To use this repository as starter for your project you can run `configure_projec
 ~ $ make run
 ```
 
+## Linting
+
+Lint and fix your code via:
+* isort
+* black
+* docformatter
+* flake8 (with multiple plugins)
+* bandit
+* sonar-scanner (you need to export sonar_qube_url and sonar_qube_key in your shell first)
+
 ## Testing
 
 Test are ran every time you build _dev_ or _prod_ image. You can also run tests using:
