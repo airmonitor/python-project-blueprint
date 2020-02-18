@@ -21,6 +21,9 @@ To use this repository as starter for your project you can run `configure_projec
 
 ## Running
 
+### Requirements
+* pandoc
+
 ### Using Python Interpreter
 ```shell
 ~ $ make run

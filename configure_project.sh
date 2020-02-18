@@ -26,6 +26,7 @@ sed -i s/$DUMMY_MODULE/$MODULE/g pytest.ini
 sed -i s/$DUMMY_MODULE/$MODULE/g setup.cfg
 sed -i s/$DUMMY_MODULE/$MODULE/g sonar-project.properties
 sed -i s/$DUMMY_MODULE/$MODULE/g Makefile
+sed -i s/$DUMMY_MODULE/$MODULE/g setup.py
 
 echo -e "\n${BLUE}Testing if everything works...${NC}\n"
 

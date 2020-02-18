@@ -39,6 +39,20 @@ dependencies: ## List dependencies used in project
 	@echo "\n{BLUE}Show module dependencies ${NC}\n"
 	@pipdeptree
 
+package:
+	@echo "\n${BLUE} Creating python package...${NC}\n"
+	@python setup.py clean sdist
+
+deploy-pypi:
+	@echo "\n${BLUE} Reformatting README.md...${NC}\n"
+	@pandoc --from=markdown --to=rst README.md -o README.rst
+	@rm -fr dist
+	@python setup.py sdist
+	@twine check dist/*
+	@echo "\n${BLUE} Uploading python package...${NC}\n"
+	@twine upload --repository-url https://test.pypi.org/legacy/ dist/$(MODULE)-$(PACKAGE_VERSION).tar.gz
+	@rm -fr README.rst
+
 version: ## Show git tag
 	@echo $(TAG)
 
