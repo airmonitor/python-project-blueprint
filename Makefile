@@ -22,7 +22,7 @@ test: ## Run test via pytest
 lint: ## Lint your code and reformat it using black, docstrings, isort and others
 	@echo "\n${BLUE}Applying isort...${NC}\n"
 	@isort apply **/*.py
-	@echo "\n{BLUE}Reformat code via black...${NC}\n"
+	@echo "\n${BLUE}Reformat code via black...${NC}\n"
 	@black -l 120 **/*.py
 	@echo "\n${BLUE}Reformat docstrings via docformatter...${NC}\n"
 	@docformatter --in-place --blank --pre-summary-newline --wrap-summaries 120 --wrap-descriptions 120 **/*.py
@@ -39,19 +39,25 @@ dependencies: ## List dependencies used in project
 	@echo "\n{BLUE}Show module dependencies ${NC}\n"
 	@pipdeptree
 
-package:
-	@echo "\n${BLUE} Creating python package...${NC}\n"
-	@python setup.py clean sdist
-
-deploy-pypi:
+build: ## Create pypi package
 	@echo "\n${BLUE} Reformatting README.md...${NC}\n"
 	@pandoc --from=markdown --to=rst README.md -o README.rst
 	@rm -fr dist
-	@python setup.py sdist
+	@python setup.py clean sdist
 	@twine check dist/*
+
+pypi-prod:
 	@echo "\n${BLUE} Uploading python package...${NC}\n"
-	@twine upload --repository-url https://test.pypi.org/legacy/ dist/$(MODULE)-$(PACKAGE_VERSION).tar.gz
+	@twine upload dist/*
 	@rm -fr README.rst
+
+deploy-prod: build pypi-prod ## Upload package to prod pypi
+
+pypi-test:
+	@echo "\n${BLUE} Uploading python package...${NC}\n"
+	@twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+deploy-test: build pypi-test ## Upload package to test pypi
 
 version: ## Show git tag
 	@echo $(TAG)
