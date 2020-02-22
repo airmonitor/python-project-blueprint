@@ -21,7 +21,7 @@ test: ## Run test via pytest
 
 lint: ## Lint your code and reformat it using black, docstrings, isort and others
 	@echo "\n${BLUE}Applying isort...${NC}\n"
-	@isort apply **/*.py
+	@isort -y -rc
 	@echo "\n${BLUE}Reformat code via black...${NC}\n"
 	@black -l 120 **/*.py
 	@echo "\n${BLUE}Reformat docstrings via docformatter...${NC}\n"
